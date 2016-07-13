@@ -1,5 +1,7 @@
 import { React, Route, Application, connect, bindActionCreators } from 'reactuate';
+import request from 'superagent';
 
+import utils from 'utils';
 import counter from './counter';
 import counterAsync from './counter/async';
 
@@ -15,6 +17,15 @@ class HomePage extends React.Component {
   }
 
   handleIncrement() {
+    request
+      .get(utils.uriSearch().youtube)
+      .query({
+        part: 'snippet',
+      })
+      .end((err, res) => {
+        console.log(err);
+        console.log(res);
+      });
     this.props.actions.incrementCounter();
   }
   handleIncrementDelayed() {

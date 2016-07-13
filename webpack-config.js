@@ -24,7 +24,7 @@ module.exports = function(options) {
   var entry = path.resolve(process.cwd(), main);
   if (!production) {
     entry = [
-      `webpack-dev-server/client?http://localhost: ${port}`, // Needed for hot reloading
+      'webpack-dev-server/client?http://localhost:' + port, // Needed for hot reloading
       'webpack/hot/only-dev-server', // See above
       entry
     ];

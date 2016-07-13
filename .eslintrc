@@ -19,6 +19,9 @@
         "no-alert": 0,
         "no-console": 0,
         "space-before-function-paren": 0,
-        "global-require": 0
+        "global-require": 0,
+        "import/no-unresolved": [2, {
+          ignore: ['utils']
+        }]
     }
 }

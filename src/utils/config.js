@@ -1,4 +1,4 @@
-export function searchUri() {
+export function uriSearch() {
   let host = '';
 
   switch (process.env.NODE_ENV) {
