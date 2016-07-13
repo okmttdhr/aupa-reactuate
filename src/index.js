@@ -1,10 +1,13 @@
-import { React, Route, Application,
-         connect, bindActionCreators } from 'reactuate';
+import { React, Route, Application, connect, bindActionCreators } from 'reactuate';
 
 import counter from './counter';
 import counterAsync from './counter/async';
 
 class App extends React.Component {
+  static propTypes = {
+    children: React.PropTypes.element.isRequired,
+  }
+
   render() {
     return <div>{this.props.children}</div>;
   }
@@ -19,20 +22,21 @@ class HomePage extends React.Component {
   }
   render() {
     return (<div>
-     <h1>Reactuate Application</h1>
-     <p>
-     Congratulations! You are running a Reactuate application now. Here is what you need to do to start developing your own application:
-     </p>
-     <ol>
-       <li>Unless you have done so already, add a start script to your package.json:
-        <pre><code>
+      <h1>Reactuate Application</h1>
+      <p>
+        Congratulations! You are running a Reactuate application now.
+        Here is what you need to do to start developing your own application:
+      </p>
+      <ol>
+        <li>Unless you have done so already, add a start script to your package.json:
+          <pre><code>
 {`"scripts": {
   "start": "node node_modules/reactuate/webpack-dev-server.js"
 }`}
-        </code></pre>
-        This way you can easily run your application:
-        <pre><code>
-{`$ npm start`}
+          </code></pre>
+          This way you can easily run your application:
+          <pre><code>
+            {`$ npm start`}
         </code></pre>
        </li>
        <li>Also, add this to your package.json
@@ -54,18 +58,20 @@ class HomePage extends React.Component {
        <button onClick={() => this.handleIncrement()}>Increment</button>
        <button onClick={() => this.handleIncrementDelayed()}>Increment with delay</button>
      </div>
-    </div>)
+    </div>);
   }
 }
 
-HomePage = connect(state => ({counter: state.counter.counter}),
-                   dispatch => ({actions:
-                     bindActionCreators({...counter.actions, ...counterAsync.actions}, dispatch)}))(HomePage);
+const ConnectedHomePage = connect(
+  state => ({ counter: state.counter.counter }),
+  dispatch => ({
+    actions: bindActionCreators({ ...counter.actions, ...counterAsync.actions }, dispatch),
+  }))(HomePage);
 
 const routes = (
   <Route component={App}>
-    <Route path="/" component={HomePage} />
+    <Route path="/" component={ConnectedHomePage} />
   </Route>
-)
+);
 
-new Application({routes, domains: {counter, counterAsync}}).render()
+new Application({ routes, domains: { counter, counterAsync } }).render();

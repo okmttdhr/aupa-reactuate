@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/okmttdhr/aupa#readme",
   "devDependencies": {
+    "babel-eslint": "^6.1.2",
     "eslint": "^2.9.0",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.10.2",
