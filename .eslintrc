@@ -17,6 +17,8 @@
         "jsx-quotes": [0, "prefer-single"],
         "func-names": [0],
         "no-alert": 0,
-        "no-console": 0
+        "no-console": 0,
+        "space-before-function-paren": 0,
+        "global-require": 0
     }
 }
