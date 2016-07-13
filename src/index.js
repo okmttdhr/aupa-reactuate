@@ -17,10 +17,12 @@ class HomePage extends React.Component {
   }
 
   handleIncrement() {
+    console.log(utils.apiKey().youtube);
     request
       .get(utils.uriSearch().youtube)
       .query({
         part: 'snippet',
+        key: utils.apiKey().youtube,
       })
       .end((err, res) => {
         console.log(err);
