@@ -15,5 +15,8 @@
         "comma-dangle": 0,
         "indent": [2, 2, {"SwitchCase": 1}],
         "jsx-quotes": [0, "prefer-single"],
+        "func-names": [0],
+        "no-alert": 0,
+        "no-console": 0
     }
 }
